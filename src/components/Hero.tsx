@@ -31,10 +31,10 @@ const Hero = () => {
             {/* Widget Placeholders */}
             <div className="mt-12 space-y-4">
               <div id="retell-chat" className="min-h-[50px] p-4 border border-border/30 rounded-lg bg-card/50">
-                <p className="text-sm text-muted-foreground">Chat widget placeholder</p>
+                <p className="text-sm text-muted-foreground">💬 Retell AI chat widget active - look for the chat button</p>
               </div>
               <div id="cal-booking" className="min-h-[50px] p-4 border border-border/30 rounded-lg bg-card/50">
-                <p className="text-sm text-muted-foreground">Booking widget placeholder</p>
+                <p className="text-sm text-muted-foreground">📅 Booking widget placeholder</p>
               </div>
             </div>
           </div>
