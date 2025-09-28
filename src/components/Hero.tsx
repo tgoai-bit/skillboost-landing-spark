@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import heroImage from "@/assets/hero-learning.jpg";
 
 const Hero = () => {
@@ -20,9 +21,16 @@ const Hero = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="text-lg px-8 py-6">
-                Book a free 15-min call
-              </Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button size="lg" className="text-lg px-8 py-6">
+                    Book a free 15-min call
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-4xl h-[600px] p-0">
+                  <div style={{width:"100%",height:"100%",overflow:"scroll"}} id="my-cal-inline-15min"></div>
+                </DialogContent>
+              </Dialog>
               <Button variant="outline" size="lg" className="text-lg px-8 py-6">
                 Browse Courses
               </Button>
