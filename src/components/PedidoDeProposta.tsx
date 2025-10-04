@@ -18,13 +18,13 @@ import {
 import { toast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
-  client_name: z.string().trim().min(1, { message: "Nome completo é obrigatório" }).max(100),
-  email: z.string().trim().email({ message: "Email inválido" }).max(255),
+  client_name: z.string().trim().min(1, { message: "Full name is required" }).max(100),
+  email: z.string().trim().email({ message: "Invalid email address" }).max(255),
   company: z.string().trim().max(100).optional(),
   phone: z.string().trim().max(20).optional(),
-  project_description: z.string().trim().min(1, { message: "Descrição do projeto é obrigatória" }).max(2000),
+  project_description: z.string().trim().min(1, { message: "Project description is required" }).max(2000),
   notes: z.string().trim().max(2000).optional(),
-  services: z.array(z.string()).min(1, { message: "Selecione pelo menos um serviço" }),
+  services: z.array(z.string()).min(1, { message: "Please select at least one service" }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -76,15 +76,15 @@ const PedidoDeProposta = () => {
       }
 
       toast({
-        title: "Pedido enviado com sucesso!",
-        description: "Entraremos em contato em breve.",
+        title: "Proposal request sent successfully!",
+        description: "We'll get in touch with you soon.",
       });
       
       form.reset();
     } catch (error) {
       toast({
-        title: "Erro ao enviar pedido",
-        description: "Por favor, tente novamente mais tarde.",
+        title: "Error sending request",
+        description: "Please try again later.",
         variant: "destructive",
       });
     } finally {
@@ -97,10 +97,10 @@ const PedidoDeProposta = () => {
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Pedido de Proposta
+            Request a Proposal
           </h2>
           <p className="text-muted-foreground text-lg">
-            Preencha o formulário abaixo e entraremos em contato com uma proposta personalizada
+            Fill out the form below and we'll get back to you with a personalized proposal
           </p>
         </div>
 
@@ -111,9 +111,9 @@ const PedidoDeProposta = () => {
               name="client_name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Nome Completo *</FormLabel>
+                  <FormLabel>Full Name *</FormLabel>
                   <FormControl>
-                    <Input placeholder="Seu nome completo" {...field} />
+                    <Input placeholder="Your full name" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -127,7 +127,7 @@ const PedidoDeProposta = () => {
                 <FormItem>
                   <FormLabel>Email *</FormLabel>
                   <FormControl>
-                    <Input type="email" placeholder="seu@email.com" {...field} />
+                    <Input type="email" placeholder="your@email.com" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -139,11 +139,11 @@ const PedidoDeProposta = () => {
                 control={form.control}
                 name="company"
                 render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Empresa</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Nome da empresa" {...field} />
-                    </FormControl>
+                <FormItem>
+                  <FormLabel>Company</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Company name" {...field} />
+                  </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -153,11 +153,11 @@ const PedidoDeProposta = () => {
                 control={form.control}
                 name="phone"
                 render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Telefone</FormLabel>
-                    <FormControl>
-                      <Input placeholder="+351 123 456 789" {...field} />
-                    </FormControl>
+                <FormItem>
+                  <FormLabel>Phone Number</FormLabel>
+                  <FormControl>
+                    <Input placeholder="+1 234 567 8900" {...field} />
+                  </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -169,10 +169,10 @@ const PedidoDeProposta = () => {
               name="project_description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Descrição do Projeto *</FormLabel>
+                  <FormLabel>Project Description *</FormLabel>
                   <FormControl>
                     <Textarea 
-                      placeholder="Descreva seu projeto e objetivos"
+                      placeholder="Describe your project and goals"
                       className="min-h-[120px]"
                       {...field}
                     />
@@ -187,10 +187,10 @@ const PedidoDeProposta = () => {
               name="notes"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Notas Adicionais</FormLabel>
+                  <FormLabel>Additional Notes</FormLabel>
                   <FormControl>
                     <Textarea 
-                      placeholder="Qualquer informação adicional"
+                      placeholder="Any additional information"
                       className="min-h-[100px]"
                       {...field}
                     />
@@ -206,7 +206,7 @@ const PedidoDeProposta = () => {
               render={() => (
                 <FormItem>
                   <div className="mb-4">
-                    <FormLabel>Serviços de Interesse *</FormLabel>
+                    <FormLabel>Services of Interest *</FormLabel>
                   </div>
                   <div className="grid md:grid-cols-2 gap-4">
                     {services.map((service) => (
@@ -254,7 +254,7 @@ const PedidoDeProposta = () => {
               className="w-full"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Enviando..." : "Enviar Pedido de Proposta"}
+              {isSubmitting ? "Sending..." : "Submit Proposal Request"}
             </Button>
           </form>
         </Form>
