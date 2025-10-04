@@ -58,26 +58,23 @@ const PedidoDeProposta = () => {
     setIsSubmitting(true);
     
     try {
-      // Placeholder for webhook URL - will be configured later
-      const webhookUrl = ""; // TODO: Add webhook URL
+      const webhookUrl = "https://public.lindy.ai/api/v1/webhooks/lindy/d4aadcfb-6489-4345-8c31-0c4aea79cea5";
       
-      if (webhookUrl) {
-        const response = await fetch(webhookUrl, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
+      const response = await fetch(webhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-        if (!response.ok) {
-          throw new Error("Failed to submit form");
-        }
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
       }
 
       toast({
-        title: "Proposal request sent successfully!",
-        description: "We'll get in touch with you soon.",
+        title: "✅ Thank you! Your proposal request has been sent successfully.",
+        description: "",
       });
       
       form.reset();
@@ -254,7 +251,7 @@ const PedidoDeProposta = () => {
               className="w-full"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Sending..." : "Submit Proposal Request"}
+              {isSubmitting ? "Sending..." : "Submit Request"}
             </Button>
           </form>
         </Form>
