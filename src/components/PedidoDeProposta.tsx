@@ -58,7 +58,7 @@ const PedidoDeProposta = () => {
     setIsSubmitting(true);
     
     try {
-      const webhookUrl = "https://public.lindy.ai/api/v1/webhooks/lindy/5864c22a-c808-4dd0-957e-81645503fa1f";
+      const webhookUrl = "https://public.lindy.ai/api/v1/webhooks/lindy/cd57cc27-05ff-4605-8a84-f4c941f3ed57";
       
       const response = await fetch(webhookUrl, {
         method: "POST",
